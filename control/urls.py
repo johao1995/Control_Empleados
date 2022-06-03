@@ -19,12 +19,18 @@ from .settings import local
 from apps.usuario.urls import usuario_urlpatterns
 from apps.empleado.urls import empleado_urlpatterns
 from apps.departamento.urls import departamento_urlpatterns
+#apis
+from apis.api_empleado.urls import api_empleado
+from apis.api_departamento.urls import api_departamento
 
 urlpatterns = [
     path('db-admin/', admin.site.urls),
     path('',include(usuario_urlpatterns)),
     path('empleado/',include(empleado_urlpatterns)),
-    path('departamento/',include(departamento_urlpatterns))
+    path('departamento/',include(departamento_urlpatterns)),
+    #apis
+    path('api_empleado/',include(api_empleado)),
+    path('api_departamento/',include(api_departamento))
     
 ]
 
