@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4 ms-5">
+            <div class="card shadow" style="width: 18rem;">
+                <img src="{{detalle_emp.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{detalle_emp.first_name}} {{detalle_emp.last_name}}</h5>
+                  <p class="card-text">
+                      <p><b>Area:</b>{{detalle_emp.codigo_departamento}}</p>
+                      <p><b>Puesto:</b> {{detalle_emp.puesto}}</p>
+                    <b>Habilidades:</b><br>
+                      {% for h in detalle_emp.habilidad.all %}
+                        {{h}}
+                      {% endfor %}
+                  </p>
+                </div>
+                <div class="card-footer bg-dark text-light">
+                    <p><b>Fecha Ingreso:</b>{{detalle_emp.fecha}}</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+{% endblock %}

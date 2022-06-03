@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mt-5">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <h1 class="text-center">Administrar Empleados</h1>
+            <br>
+            <table class="table table-bordered">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Departamento</td>
+                        <td>Puesto</td>
+                        {% comment %}
+                        <td>Habilidad</td>}
+                        {% endcomment %}
+                        <td>Fecha</td>
+                        <td>Observacion</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if admiempleado|length > 0 %}
+                        {% for e in admiempleado %}
+                            <tr>
+                                <td>{{e.first_name}}</td>
+                                <td>{{e.last_name}}</td>
+                                <td>{{e.codigo_departamento}}</td>
+                                <td>{{e.puesto}}</td>
+                                {% comment %}
+                                <td>
+                                    {% for h in e.habilidad.all %}  
+                                        {{h}}
+                                    {% endfor %}
+                                </td>
+                                {% endcomment %}
+                                <td>{{e.fecha}}</td>
+                                <td>
+                                    <a class="btn btn-warning" href="{% url 'empleado:update-empleado' e.id %}">
+                                        <i class="bi bi-pencil-square text-white"></i>
+                                    </a>
+                                    <a class="btn btn-danger" href="{% url 'empleado:delete-empleado' e.id %}">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}  

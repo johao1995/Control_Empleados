@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row mt-5 container mx-5">
+        <h1 class="text-center">{{title}}</h1>
+        {% if dept_emp|length > 0 %}
+            {% for e in dept_emp %}
+            <div class="col-12 col-lg-4 mt-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{e.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">{{e.first_name}} {{e.last_name}}</h5>
+                      <p class="card-text">
+                          <p><b>Area:</b>{{e.codigo_departamento}}</p>
+                          <p><b>Puesto:</b> {{e.puesto}}</p>
+                        <b>Habilidades:</b><br>
+                          {% for h in e.habilidad.all %}
+                            {{h}}
+                          {% endfor %}
+                      </p>
+                    </div>
+                    <div class="card-footer bg-dark text-light">
+                        <p><b>Fecha Ingreso:</b>{{e.fecha}}</p>
+                    </div>
+                </div>  
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{{dept_emp}}

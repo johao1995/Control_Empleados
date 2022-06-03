@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'empleado:register-empleado' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 col-lg-4"></div>
+            <div class="col-12 col-lg-4">
+                <div class="card px-3 py-5 mt-5">
+                    <div class="card-title">
+                        <h2 class="text-center">Empleado</h2>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Nombre</label>
+                        {{form.first_name}}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="" class="form-label">Apellido</label>
+                        {{form.last_name}}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="" class="form-label">Puesto</label>
+                        {{form.puesto}}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="" class="form-label">Departamento</label>
+                        {{form.codigo_departamento}}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="" class="form-label">Habilidad</label>
+                        {{form.habilidad}}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Imagen</label>
+                        {{form.image}}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="" class="form-label">Fecha</label>
+                        {{form.fecha}}
+                    </div>
+                    {{form.errors}}
+                    <div class="mb-3">
+                        <button type="submit"class="btn btn-dark w-100">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

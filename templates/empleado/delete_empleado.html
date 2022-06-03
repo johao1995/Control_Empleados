@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mt-5">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1 class="text-center">Eliminar Empleados</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card px-3 py-5">
+                    <div class="mb-3">
+                        <h3>Desea eliminar:{{empleado}}</h3><br>
+                        <button class="btn btn-danger w-100" type="submit" >ELiminar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock %}  
